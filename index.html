@@ -4,7 +4,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
   <body>
-    <h1>Goodmorning mullis</h1>
+    <h1>Goodmorning Montgomomomomomomommomommoomomommomoery</h1>
     <p>The World War I was between the periods from 1914-1919 and was an extremely bloody war. More than 10 million military deaths and about 20 million wounded, World War I had little ground loss or won. It is also known as The Great War.</p>
+    <h3>So how is this for a basic website?</h3>
+    <div id="player"></div>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '800',
+          width: '1300',
+          videoId: '4Bz0pYhAoFg',
+          playerVars: {
+            'playsinline': 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 30000000000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
   </body>
 </html>
