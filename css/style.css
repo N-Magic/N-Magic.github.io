@@ -710,7 +710,7 @@ button.button-xs[type='submit'], .button-group-xs > button[type='submit'].button
 .jumbotron {
 	padding: 0 15px;
 	margin-bottom: 0;
-	color: #E31837;
+	color: #ffffff;
 	position: relative;
 	z-index: 2;
 	display: inline-block;
@@ -725,7 +725,7 @@ button.button-xs[type='submit'], .button-group-xs > button[type='submit'].button
 
 .jumbotron h1,
 .jumbotron .h1 {
-	color: #252525;
+	color: #ffffff;
 	margin-bottom: 30px;
 	letter-spacing: 0.02em;
 	line-height: 1.2;
@@ -734,7 +734,7 @@ button.button-xs[type='submit'], .button-group-xs > button[type='submit'].button
 
 .jumbotron h1 small,
 .jumbotron .h1 small {
-	color: #38424a;
+	color: #ffffff;
 	display: block;
 	font-size: 14px;
 	text-transform: uppercase;
