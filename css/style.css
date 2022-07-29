@@ -406,7 +406,7 @@ mark,
 }
 
 .slider-text {
-	color: #ffffff;
+	color: #FFFFFF;
 }
 
 .lead {
@@ -710,7 +710,7 @@ button.button-xs[type='submit'], .button-group-xs > button[type='submit'].button
 .jumbotron {
 	padding: 0 15px;
 	margin-bottom: 0;
-	color: #38424a;
+	color: #E31837;
 	position: relative;
 	z-index: 2;
 	display: inline-block;
