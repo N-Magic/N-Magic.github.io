@@ -80,4 +80,4 @@ function resetAttempt() {
   lastTapTime = 0;
   nailedIt = false; // Reset the "You nailed it!" flag
   document.getElementById('result').innerHTML = ''; // Clear result display
-}
+} // test
