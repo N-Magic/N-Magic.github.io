@@ -1,6 +1,6 @@
 let tapTimes = [];
 let lastTapTime = 0;
-const maxTaps = 5; // Set max taps to 5
+const maxTaps = 5;
 let nailedIt = false; // Flag for "You nailed it!"
 
 // Invisible button click handler
@@ -20,15 +20,10 @@ document.getElementById('tapBtn').addEventListener('click', () => {
 
   lastTapTime = currentTime;
 
-  // Check if maxTaps (5 taps) have been made
+  // Check if 10 taps have been made
   if (tapTimes.length === maxTaps) {
     calculateBPM();
   }
-});
-
-// Reset button click handler
-document.getElementById('resetBtn').addEventListener('click', () => {
-  resetAttempt();
 });
 
 function calculateBPM() {
@@ -71,13 +66,7 @@ function calculateBPM() {
   }
 
   // Reset for another round of tapping
-  resetAttempt();
-}
-
-// Function to reset the attempt but leave the goal tempo
-function resetAttempt() {
   tapTimes = [];
-  lastTapTime = 0; // Reset last tap time
+  lastTapTime = 0;
   nailedIt = false; // Reset the "You nailed it!" flag
-  document.getElementById('result').innerHTML = ''; // Clear result display
 }
