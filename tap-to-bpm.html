@@ -51,13 +51,18 @@
       font-size: 1.2em;
       color: #333;
     }
+    #resetBtn {
+      background-color: #dc3545;
+      color: white;
+      margin-left: 10px;
+    }
     /* Invisible button */
     #nailedItBtn {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       background-color: transparent;
       border: none;
       cursor: pointer;
@@ -67,7 +72,7 @@
 <body>
   <div class="tap-container">
     <h1>Tap Your Tempo</h1>
-    <p>Tap the button 10 times to calculate your tempo (BPM).</p>
+    <p>Tap the button 5 times to calculate your tempo (BPM).</p>
     
     <!-- Input for goal BPM -->
     <label for="goalTempo">Goal Tempo:</label>
@@ -75,6 +80,9 @@
     
     <!-- Tap button -->
     <button class="btn" id="tapBtn">Tap</button>
+
+    <!-- Reset button -->
+    <button class="btn" id="resetBtn">Reset</button>
 
     <!-- Display result -->
     <div id="result"></div>
