@@ -77,7 +77,7 @@ function calculateBPM() {
 // Function to reset the attempt but leave the goal tempo
 function resetAttempt() {
   tapTimes = [];
-  lastTapTime = 0;
+  lastTapTime = 0; // Reset last tap time
   nailedIt = false; // Reset the "You nailed it!" flag
   document.getElementById('result').innerHTML = ''; // Clear result display
-} // test
+}
