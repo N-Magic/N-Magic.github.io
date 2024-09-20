@@ -1,6 +1,6 @@
 let tapTimes = [];
 let lastTapTime = 0;
-const maxTaps = 10;
+const maxTaps = 5; // Set max taps to 5
 let nailedIt = false; // Flag for "You nailed it!"
 
 // Invisible button click handler
@@ -20,25 +20,32 @@ document.getElementById('tapBtn').addEventListener('click', () => {
 
   lastTapTime = currentTime;
 
-  // Check if 10 taps have been made
+  // Check if maxTaps (5 taps) have been made
   if (tapTimes.length === maxTaps) {
     calculateBPM();
   }
 });
 
+// Reset button click handler
+document.getElementById('resetBtn').addEventListener('click', () => {
+  resetAttempt();
+});
+
 function calculateBPM() {
+  const goalTempo = parseInt(document.getElementById('goalTempo').value);
+  
   if (nailedIt) {
-    // If the user pressed the invisible button, show "You nailed it!"
-    document.getElementById('result').innerText = 'You nailed it!';
+    // If the user pressed the invisible button, simulate a perfect match to the goal tempo
+    document.getElementById('result').innerHTML = `
+      Your tempo is: ${goalTempo} BPM.<br>
+      You hit the goal exactly!
+    `;
   } else {
     // Calculate the average time between taps
     const averageTimeBetweenTaps = tapTimes.reduce((a, b) => a + b, 0) / tapTimes.length;
 
     // Calculate the BPM
     const bpm = Math.round(60000 / averageTimeBetweenTaps);
-
-    // Get the goal BPM from the input
-    const goalTempo = parseInt(document.getElementById('goalTempo').value);
 
     // Calculate the percentage difference if the goal tempo is entered
     let percentageOff = '';
@@ -47,12 +54,12 @@ function calculateBPM() {
       percentageOff = ((difference / goalTempo) * 100).toFixed(2); // Percentage difference
 
       // Display percentage difference message
-      if (percentageOff > 0) {
-        percentageOff = `You are ${percentageOff}% faster than your goal.`;
-      } else if (percentageOff < 0) {
-        percentageOff = `You are ${Math.abs(percentageOff)}% slower than your goal.`;
-      } else {
+      if (difference === 0) {
         percentageOff = `You hit the goal exactly!`;
+      } else if (difference > 0) {
+        percentageOff = `You are ${percentageOff}% faster than your goal.`;
+      } else {
+        percentageOff = `You are ${Math.abs(percentageOff)}% slower than your goal.`;
       }
     }
 
@@ -64,7 +71,13 @@ function calculateBPM() {
   }
 
   // Reset for another round of tapping
+  resetAttempt();
+}
+
+// Function to reset the attempt but leave the goal tempo
+function resetAttempt() {
   tapTimes = [];
   lastTapTime = 0;
   nailedIt = false; // Reset the "You nailed it!" flag
+  document.getElementById('result').innerHTML = ''; // Clear result display
 }
